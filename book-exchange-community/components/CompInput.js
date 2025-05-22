@@ -2,13 +2,14 @@ import React from "react";
 
 import {StyleSheet, TextInput} from "react-native";
 
-export default function CompInput({ placeholder, onChangeText, secureTextEntry }) {
+export default function CompInput({ placeholder, onChangeText, secureTextEntry, value }) {
     return (
         <TextInput
             style={styles.input}
             placeholder={placeholder}
             secureTextEntry={secureTextEntry}
             onChangeText={onChangeText}
+            value={value}
         />
     );
 }

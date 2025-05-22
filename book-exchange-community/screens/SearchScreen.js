@@ -1,61 +1,78 @@
 import * as React from 'react';
-import {View, Text, Alert} from 'react-native';
-import MapView, {Marker} from 'react-native-maps';
+import { View, Text, Alert, StyleSheet } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import * as Location from 'expo-location';
+import { useCallback, useEffect, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function SearchScreen() {
-    const [location, setLocation] = React.useState(null);
+    const [mapRegion, setMapRegion] = useState({
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+    });
 
-    const fetchLocation = async () => {
+    const handleGetLocation = async () => {
+        try {
 
-        const loc = await Location.getCurrentPositionAsync();
-        setLocation(loc);
+            let currentLocation = await Location.getCurrentPositionAsync({});
+            setMapRegion({
+                latitude: currentLocation.coords.latitude,
+                longitude: currentLocation.coords.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+            });
+        } catch (error) {
+            console.error("Error al obtener la ubicación:", error);
+            Alert.alert('Error', 'No se pudo obtener la ubicación. Asegúrate de tener los permisos activados y la ubicación habilitada en tu dispositivo.');
+        }
     };
 
-    React.useEffect(() => {
-        fetchLocation();
+    useEffect(() => {
+        handleGetLocation();
     }, []);
 
-
+    useFocusEffect(
+        useCallback(() => {
+            handleGetLocation();
+            return () => {};
+        }, [])
+    );
 
     return (
-        <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-            <MapView
-                style={{flex: 1, borderRadius: 5, width: '100%', height: '100%'}}
-
-                showsUserLocation={true}
-                userLocationUpdateInterval={50000}
-                followsUserLocation={false}
-                showsCompass={false}
-                showsPointsOfInterest={false}
-                showsMyLocationButton={false}
-                showsTraffic={false}
-                showsIndoors={false}
-                showsBuildings={false}
-
-                initialRegion={{
-                    latitude: location? location.coords.latitude: 6,
-                    longitude: location? location.coords.longitude: -75,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
-                }}
-            >
-                {/*<Marker*/}
-                {/*    coordinate={{latitude: 6.336039, longitude: -75.570471}}*/}
-                {/*    title="Ubicación"*/}
-                {/*    description="Descripción de la ubicación"*/}
-                {/*/>*/}
-            </MapView>
+        <View style={styles.container}>
+            {mapRegion.latitude !== 0 && mapRegion.longitude !== 0 ? (
+                <MapView
+                    style={styles.map}
+                    showsUserLocation={true}
+                    showsCompass={false}
+                    showsPointsOfInterest={false}
+                    showsMyLocationButton={true}
+                    showsTraffic={false}
+                    showsIndoors={false}
+                    showsBuildings={false}
+                    region={mapRegion}
+                    // onRegionChangeComplete={(region) => setMapRegion(region)}
+                >
+                </MapView>
+            ) : (
+                <Text>Cargando ubicación...</Text>
+            )}
         </View>
     );
 }
 
-
-const styles = {
+const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignContent: 'center',
-    }
-}
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    map: {
+        flex: 1,
+        borderRadius: 5,
+        width: '100%',
+        height: '100%',
+    },
+});

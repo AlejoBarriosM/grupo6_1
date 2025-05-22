@@ -9,10 +9,6 @@ Desarrollar una aplicación móvil que permita a las personas intercambiar libro
 | Nombre                         | Correo Personal                     | Correo Universitario                  | Usuario de GitHub  |
 |--------------------------------|-------------------------------------|---------------------------------------|--------------------|
 | Diego Alejandro Barrios Mejía  | [diego.barrios@example.com](mailto:diego.barrios@example.com) | [diego.barrios@tdea.edu.co](mailto:diego.barrios@tdea.edu.co) | AlejoBarriosM      |
-| Andrés Camilo Díaz Quintero    | [andres.diaz@example.com](mailto:andres.diaz@example.com)     | [andres.diaz@tdea.edu.co](mailto:andres.diaz@tdea.edu.co)     | Milo2404           |
-| Kevin Javier Aguilar Román     | [kevin.aguilar@example.com](mailto:kevin.aguilar@example.com) | [kevin.aguilar@tdea.edu.co](mailto:kevin.aguilar@tdea.edu.co) | konig101           |
-| Fredy Alberto Licona Mena      | [fredy.licona@example.com](mailto:fredy.licona@example.com)   | [fredy.licona@tdea.edu.co](mailto:fredy.licona@tdea.edu.co)   | frdyWrld           |
-| Eiden David Perea Bermudez     | [eiden.perea@example.com](mailto:eiden.perea@example.com)     | [eiden.perea@tdea.edu.co](mailto:eiden.perea@tdea.edu.co)     | Eiden-21           |
 
 ## Repositorio
 

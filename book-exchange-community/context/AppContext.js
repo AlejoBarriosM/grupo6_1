@@ -10,7 +10,7 @@ export const AppProvider = ({ children }) => {
     const [loading, setLoading] = useState(false)
     const [widthApp, setWidthApp] = useState(useWindowDimensions().width);
     const [heightApp, setHeightApp] = useState(useWindowDimensions().height);
-    const {cameraPermission, galleryPermission, locationPermission} = usePermissions();
+    const {cameraPermission, galleryPermission, locationPermission, notificationPermission} = usePermissions();
 
     const contextValue = {
         isAuthenticated,
@@ -24,6 +24,7 @@ export const AppProvider = ({ children }) => {
         cameraPermission,
         galleryPermission,
         locationPermission,
+        notificationPermission,
     };
 
     return (

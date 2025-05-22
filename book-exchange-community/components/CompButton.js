@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         elevation: 8,
         width: '100%',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     text: {
         color: '#F2A71B',

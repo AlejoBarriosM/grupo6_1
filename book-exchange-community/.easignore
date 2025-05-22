@@ -1,0 +1,14 @@
+# Ignorar configuraciones del IDE
+.idea/
+.vscode/
+*.iml
+
+# Ignorar archivos y carpetas locales de Expo
+.expo/
+.expo-shared/
+.env
+
+# Ignorar dependencias y archivos de construcción
+node_modules/
+dist/
+build/

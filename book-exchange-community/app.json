@@ -1,5 +1,6 @@
 {
   "expo": {
+    "jsEngine": "jsc",
     "name": "book-exchange-community",
     "slug": "book-exchange-community",
     "version": "1.0.0",
@@ -12,6 +13,10 @@
       "resizeMode": "contain",
       "backgroundColor": "#011F26"
     },
+    "plugins": [
+      "expo-dev-client",
+      "expo-notifications"
+    ],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -21,13 +26,24 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/Logo.png",
-        "backgroundColor": "#011F26"
+        "backgroundColor": "#011F26",
+        "edgeToEdgeEnabled": true
       },
       "package": "com.anonymous.bookexchangecommunity",
-      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ],
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "74fbb92a-7156-4c22-bca8-9696f81e9da1"
+      }
+    },
+    "owner": "emu013"
   }
 }

@@ -1,4 +1,4 @@
-import {addDoc, collection, getDocs, deleteDoc, doc, updateDoc, query, where} from 'firebase/firestore';
+import {addDoc, collection, getDocs, deleteDoc, doc, updateDoc, query, where, setDoc} from 'firebase/firestore';
 import {db} from '../lib/Firebase'
 import {Alert} from "react-native";
 
@@ -13,12 +13,21 @@ export const createRecord = async ({collectionName, data}) => {
     }
 }
 
+export const createRecordWithId = async ({ collectionName, docId, data }) => {
+    try {
+        const docRef = doc(db, collectionName, docId);
+        await setDoc(docRef, data);
+        return docRef.id;
+    } catch (e) {
+        Alert.alert("Error al crear documento", e.message);
+        throw e;
+    }
+};
+
 export const getCollection = async ({collectionName}) => {
-    console.log('ingresó a getCollection');
     try {
         const colRef = collection(db, collectionName);
         const querySnapshot = await getDocs(colRef);
-        console.log(querySnapshot.docs);
         return querySnapshot.docs.map(doc => doc.data());
     } catch (e) {
         Alert.alert('Error', e.message);

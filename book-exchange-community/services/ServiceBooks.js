@@ -1,6 +1,4 @@
-import {useContext} from "react";
 import {createRecord, getCollection, getCollectionByUser, updateRecord} from "./ServiceFireStore";
-import {AppContext} from "../context/AppContext";
 import {Alert} from "react-native";
 
 
@@ -13,11 +11,9 @@ export async function addBook(book) {
     }
 }
 
-
-export async function getOwnBooks() {
-    const user = useContext(AppContext);
+export async function getOwnBooks(userId) {
     try {
-        return await getCollectionByUser({userId: user.user.uid});
+        return await getCollectionByUser({userId: userId});
     } catch (error) {
         console.error('Error', error.message);
         return [];

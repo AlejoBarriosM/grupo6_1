@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "911247862408",
+    "firebase_url": "https://swap-books-app-default-rtdb.firebaseio.com",
+    "project_id": "swap-books-app",
+    "storage_bucket": "swap-books-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911247862408:android:fea4ea290ec4d71158cd3d",
+        "android_client_info": {
+          "package_name": "com.anonymous.bookexchangecommunity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAohA27F5U2UodlU0Zlg6DX2iqRUr9OVJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
