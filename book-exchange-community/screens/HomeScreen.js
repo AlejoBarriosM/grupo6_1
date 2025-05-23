@@ -1,7 +1,6 @@
 import React from 'react';
 import {Alert, Text, View} from 'react-native';
 import {AppContext} from "../context/AppContext";
-import GetToken from "../services/ServiceNotification"
 
 export default function HomeScreen({navigation}) {
 
@@ -29,10 +28,6 @@ export default function HomeScreen({navigation}) {
         Alert.alert("Permiso de notificaciones denegado", "Es necesario permitir las notificaciones.");
         return;
     }
-
-    // if (user.user.notificationToken) {
-    //     // GetToken();
-    // }
 
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>

@@ -1,10 +1,29 @@
-import React from 'react';
-import {View} from 'react-native';
+import React, {useContext, useEffect} from 'react';
+import {Alert, View} from 'react-native';
 import CompButton from "../../components/CompButton";
 import MyBooks from "../../components/MyBooks";
 import Screens from "../../components/Screens";
+import {registerForPushNotificationsAsync} from "../../services/ServiceExpoNotification";
+import {AppContext} from "../../context/AppContext";
 
 export default function AddBookScreen({navigation}) {
+    const { user, notificationPermission } = useContext(AppContext);
+
+    useEffect(() => {
+        const registerToken = async () => {
+            if (user?.uid && notificationPermission) {
+                try {
+                    const token = await registerForPushNotificationsAsync(user.uid);
+                } catch (error) {
+                    Alert.alert("Error de Notificación", "Hubo un problema al configurar las notificaciones.");
+                }
+            } else if (user?.uid && !notificationPermission) {
+                Alert.alert("Permiso de notificaciones denegado", "Es necesario permitir las notificaciones.");
+            }
+        };
+
+        registerToken();
+    }, [user?.uid, notificationPermission]);
 
 
     return (

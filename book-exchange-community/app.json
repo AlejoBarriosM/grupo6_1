@@ -1,8 +1,8 @@
 {
   "expo": {
     "jsEngine": "jsc",
-    "name": "book-exchange-community",
-    "slug": "book-exchange-community",
+    "name": "Swap Books",
+    "slug": "Swap Books",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/Logo.png",
@@ -34,7 +34,12 @@
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION"
       ],
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDiOXb60K1bLWf_DUZwVuBoemf1kZByQB8"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

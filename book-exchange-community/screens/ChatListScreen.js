@@ -16,7 +16,7 @@ import {
     orderBy,
     getDocs
 } from 'firebase/firestore';
-import {getOrCreateRoom} from '../services/ChatService';
+import {getOrCreateRoom} from '../services/ServiceChat';
 import Screens from "../components/Screens";
 
 export default function ChatListScreen({navigation}) {
