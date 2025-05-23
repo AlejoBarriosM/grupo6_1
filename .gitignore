@@ -1,7 +1,10 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
 # dependencies
-node_modules/
+book-exchange-community/node_modules/
+book-exchange-community/android/
+book-exchange-community/.expo/
+book-exchange-community/.idea/
 
 # Expo
 .expo/

@@ -9,7 +9,7 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/Swap-Books.gif",
+      "image": "./assets/Swap-Books.png",
       "resizeMode": "contain",
       "backgroundColor": "#011F26"
     },
@@ -26,9 +26,9 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/Logo.png",
-        "backgroundColor": "#011F26",
-        "edgeToEdgeEnabled": true
+        "backgroundColor": "#011F26"
       },
+      "edgeToEdgeEnabled": true,
       "package": "com.anonymous.bookexchangecommunity",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
@@ -41,9 +41,8 @@
     },
     "extra": {
       "eas": {
-        "projectId": "74fbb92a-7156-4c22-bca8-9696f81e9da1"
+        "projectId": "c92a4e0f-74e9-4866-a495-cf71ccb8935a"
       }
-    },
-    "owner": "emu013"
+    }
   }
 }

@@ -7,8 +7,13 @@
 .expo/
 .expo-shared/
 .env
+.gitignore
+.easignore
 
 # Ignorar dependencias y archivos de construcción
 node_modules/
 dist/
 build/
+android/
+book-exchange-community/node_modules/
+book-exchange-community/android/
