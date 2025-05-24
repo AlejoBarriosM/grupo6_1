@@ -2,7 +2,7 @@
   "expo": {
     "jsEngine": "jsc",
     "name": "Swap Books",
-    "slug": "Swap Books",
+    "slug": "book-exchange-community",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/Logo.png",
