@@ -5,9 +5,10 @@ import MyBooks from "../../components/MyBooks";
 import Screens from "../../components/Screens";
 import {registerForPushNotificationsAsync} from "../../services/ServiceExpoNotification";
 import {AppContext} from "../../context/AppContext";
+import LoadingOverlay from "../../components/LoadingOverlay";
 
 export default function AddBookScreen({navigation}) {
-    const { user, notificationPermission } = useContext(AppContext);
+    const { user, notificationPermission, loading } = useContext(AppContext);
 
     useEffect(() => {
         const registerToken = async () => {
@@ -34,6 +35,7 @@ export default function AddBookScreen({navigation}) {
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', alignContent: 'center'}}>
                 <CompButton text=" + Agregar Libro" onPress={() => navigation.navigate('SearchBookScreen')}/>
             </View>
+            <LoadingOverlay visible={loading} text="Cargando tus libros..." />
         </Screens>
     );
 }

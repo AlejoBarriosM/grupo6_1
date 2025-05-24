@@ -1,4 +1,3 @@
-// screens/profile/ProfileScreen.js
 import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { View, StyleSheet, Alert, ScrollView, TouchableOpacity } from 'react-native';
 import { Avatar, TextInput, Button, RadioButton, Text, Title, Card, IconButton } from 'react-native-paper';
@@ -30,6 +29,7 @@ export default function EditProfileScreen({ navigation, route }) {
     const [loading, setLoading] = useState(false);
     const [profileDataLoading, setProfileDataLoading] = useState(true);
 
+
     const logout = useLogout();
     const updateProfileAuth = useUpdateProfile();
     const recoverPassword = useRecoverPassword();
@@ -54,8 +54,10 @@ export default function EditProfileScreen({ navigation, route }) {
                     } else {
                         setName(user?.displayName || '');
                         setProfileImage(user?.photoURL || null);
+                        console.log("Documento de usuario no encontrado en Firestore, usando datos de Auth.");
                     }
                 } catch (error) {
+                    console.error("Error fetching user profile from Firestore:", error);
                 } finally {
                     setProfileDataLoading(false);
                 }
@@ -137,7 +139,7 @@ export default function EditProfileScreen({ navigation, route }) {
             }
 
             const authDataToUpdate = {};
-            if (name !== (user?.displayName || '')) authDataToUpdate.displayName = name; // Comparar con el valor actual de auth o un string vacío
+            if (name !== (user?.displayName || '')) authDataToUpdate.displayName = name;
             if (uploadedImageUrl && uploadedImageUrl !== user?.photoURL) authDataToUpdate.photoURL = uploadedImageUrl;
 
             if (Object.keys(authDataToUpdate).length > 0) {
@@ -194,6 +196,13 @@ export default function EditProfileScreen({ navigation, route }) {
     if (profileDataLoading) {
         return <LoadingOverlay visible={true} text="Cargando perfil..." />;
     }
+
+    const locationSubtitle = (loc) => {
+        if (loc && typeof loc.latitude === 'number' && typeof loc.longitude === 'number') {
+            return `Lat: ${loc.latitude.toFixed(4)}, Lng: ${loc.longitude.toFixed(4)}`;
+        }
+        return "No establecida";
+    };
 
     return (
         <Screens>
@@ -290,7 +299,10 @@ export default function EditProfileScreen({ navigation, route }) {
                         />
 
                         <Card style={styles.locationCard}>
-                            <Card.Title title="Ubicación para Intercambios" subtitle={location ? `Lat: ${location.latitude.toFixed(4)}, Lng: ${location.longitude.toFixed(4)}` : "No establecida"} />
+                            <Card.Title
+                                title="Ubicación para Intercambios"
+                                subtitle={locationSubtitle(location)}
+                            />
                             <Card.Actions>
                                 <Button icon="map-marker-plus" mode="outlined" onPress={navigateToLocationPicker} style={styles.locationButton}>
                                     Seleccionar en Mapa

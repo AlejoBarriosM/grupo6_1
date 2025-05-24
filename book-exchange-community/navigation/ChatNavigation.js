@@ -18,7 +18,7 @@ export default function ChatNavigation() {
             }}
         >
             <Tab.Screen name="ChatListScreen" component={ChatListScreen}/>
-            <Tab.Screen name="ChatScreen" component={ChatScreen}/>
+            <Tab.Screen name="ChatScreen" component={ChatScreen} options={{ tabBarButton: () => null, title: 'Chat' }} />
         </Tab.Navigator>
     );
 }

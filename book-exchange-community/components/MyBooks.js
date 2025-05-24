@@ -8,11 +8,14 @@ import {getOwnBooks} from "../services/ServiceBooks";
 
 export default function MyBooks() {
     const [books, setBooks] = useState([]);
-    const {user} = useContext(AppContext);
+    const {user, setLoading} = useContext(AppContext);
+
 
     const fetchBooks = async () => {
+        setLoading(true);
         const fetched = await getOwnBooks(user.uid);
         setBooks(fetched);
+        setLoading(false);
     };
 
     useEffect(() => {
